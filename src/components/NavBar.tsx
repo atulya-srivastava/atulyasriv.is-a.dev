@@ -8,14 +8,15 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      console.log("sy==  ",currentScrollY);
 
-      if (currentScrollY <= 10) {
+      if (currentScrollY <= 600) {
         // Always show if at the very top
         setIsVisible(true);
-      } else if (currentScrollY > lastScrollY) {
+      } else if (currentScrollY >= lastScrollY + 4) {
         // Scrolling down
         setIsVisible(false);
-      } else {
+      } else if (currentScrollY + 2< lastScrollY){
         // Scrolling up
         setIsVisible(true);
       }
