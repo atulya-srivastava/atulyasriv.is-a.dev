@@ -145,7 +145,7 @@ const Index = () => {
       <div className="fixed inset-0 opacity-[0.02] pointer-events-none">
         <div className="absolute inset-0" style={{
           backgroundImage: `linear-gradient(hsl(180 100% 50%) 1px, transparent 1px), linear-gradient(90deg, hsl(180 100% 50%) 1px, transparent 1px)`,
-          backgroundSize: '100px 100px'
+          backgroundSize: '50px 50px'
         }} />
       </div>
 
