@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Background colors shifted to near 0% Lightness (Black) */
+    --background: 220 20% 2%;  /* Near Black */
+    --foreground: 180 100% 90%; /* Vibrant Cyan/Light Text */
+
+    --card: 220 18% 4%;        /* Dark Card */
+    --card-foreground: 180 100% 90%;
+
+    --popover: 220 18% 4%;
+    --popover-foreground: 180 100% 90%;
+
+    /* Primary Accent (Cyan) is unchanged */
+    --primary: 180 100% 50%;
+    --primary-foreground: 220 20% 2%; /* Contrast against new dark background */
+
+    --secondary: 180 60% 20%;
+    --secondary-foreground: 180 100% 90%;
+
+    --muted: 220 15% 7%;        /* Muted background near black */
+    --muted-foreground: 180 20% 60%;
+
+    --accent: 180 100% 40%;
+    --accent-foreground: 220 20% 2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 10%;      /* Darker Border */
+    --input: 220 15% 7%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.75rem;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(180 100% 50%), hsl(200 100% 60%));
+    --gradient-card: linear-gradient(145deg, hsl(220 18% 4%), hsl(220 18% 8%));
+    --glow-cyan: 0 0 20px hsl(180 100% 50% / 0.3);
+    --glow-strong: 0 0 40px hsl(180 100% 50% / 0.5);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar Light Theme remains untouched */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Background colors shifted to near 0% Lightness (Black) */
+    --background: 220 20% 2%;
+    --foreground: 180 100% 90%;
+
+    --card: 220 18% 4%;
+    --card-foreground: 180 100% 90%;
+
+    --popover: 220 18% 4%;
+    --popover-foreground: 180 100% 90%;
+
+    --primary: 180 100% 50%;
+    --primary-foreground: 220 20% 2%;
+
+    --secondary: 180 60% 20%;
+    --secondary-foreground: 180 100% 90%;
+
+    --muted: 220 15% 7%;
+    --muted-foreground: 180 20% 60%;
+
+    --accent: 180 100% 40%;
+    --accent-foreground: 220 20% 2%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 10%;
+    --input: 220 15% 7%;
+    --ring: 180 100% 50%;
+    
+    /* Sidebar Dark Theme remains untouched (but its background is now also a little darker) */
+    --sidebar-background: 240 5.9% 10%; 
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
