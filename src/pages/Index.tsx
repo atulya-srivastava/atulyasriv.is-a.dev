@@ -488,7 +488,7 @@ const Index = () => {
             
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="outline" size="lg" className="group border-blue-500/50 hover:bg-blue-500/10 hover:border-blue-500" asChild>
-                <a href="https://github.com/atulyasriv" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/atulya-srivastava" target="_blank" rel="noopener noreferrer">
                   <Github className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                   GitHub
                 </a>
@@ -500,7 +500,7 @@ const Index = () => {
                 </a>
               </Button>
               <Button size="lg" className="group bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white border-0 shadow-lg shadow-blue-500/30" asChild>
-                <a href="mailto:contact@atulyasrivastava.com">
+                <a href="mailto:cvns.atulyasrivastava@gmail.com">
                   <Mail className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                   Email
                 </a>
