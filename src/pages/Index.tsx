@@ -2,13 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Code2, Github, Linkedin, Mail, ExternalLink, Terminal, Braces, Box, Play, Pause, ArrowUpRight, Sparkles } from "lucide-react";
+import { Code2, Github, Linkedin, Mail, ExternalLink, Terminal, Braces, Box, Play, Pause, ArrowUpRight, Sparkles,Monitor,Wrench,Server,Database } from "lucide-react";
 import { FaReact, FaNodeJs, FaPython, FaGitAlt, FaDatabase } from "react-icons/fa";
 import { SiTypescript, SiJavascript, SiTailwindcss, SiNextdotjs, SiPostgresql, SiGraphql } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 import Navbar from "@/components/NavBar";
 import TextScramble from "@/components/TextSramble";
 import MatrixRain from "@/components/MatrixRain";
+import TechStack from "@/components/TechStack";
 
 
 const Index = () => {
@@ -122,7 +123,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       {/* Animated mesh gradient background */}
-      <div className="fixed inset-0 opacity-30 pointer-events-none">
+      <div className="fixed inset-0 opacity-70 pointer-events-none">
         <div 
           className="absolute inset-0 transition-all duration-1000"
           style={{
@@ -142,20 +143,34 @@ const Index = () => {
       </div>
 
       {/* Subtle grid overlay */}
-      <div className="fixed inset-0 opacity-[0.02] pointer-events-none">
+      <div className="fixed inset-0 opacity-[0.08] pointer-events-none">
         <div className="absolute inset-0" style={{
           backgroundImage: `linear-gradient(hsl(180 100% 50%) 1px, transparent 1px), linear-gradient(90deg, hsl(180 100% 50%) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
+          backgroundSize: '70px 70px'
         }} />
       </div>
 
       {/* Navigation */}
       <Navbar/>
 
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6">
-        <div className=" bg-yellow-600 h-screen"><MatrixRain/></div>
-        <div className="container mx-auto text-center space-y-8 animate-fade-in">
+    {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        {/* Background Image */}
+        <img 
+          // src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29zbW9zfGVufDB8fDB8fHww&fm=jpg&q=60&w=3000" 
+          // alt="" 
+          // src="https://t4.ftcdn.net/jpg/03/43/50/35/360_F_343503546_K5gj6peIEScCA0HxEKv4QIhTnkr68YbJ.jpg"
+          
+          className="absolute inset-0 w-full h-full object-cover opacity-30 z-0"
+        />
+        
+        {/* Matrix Rain Overlay */}
+        <div className="absolute inset-0 z-10">
+         {!isAnimationPaused && <MatrixRain/>}
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-20 container mx-auto text-center space-y-8 animate-fade-in">
           {/* <div className="font-mono text-muted-foreground text-sm mb-4 flex items-center justify-center gap-2">
             <Code2 className="w-4 h-4 text-blue-500" />
             &lt;profile&gt;
@@ -165,7 +180,7 @@ const Index = () => {
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-600 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
               <Avatar className="relative w-32 h-32 md:w-40 md:h-40 border-4 border-blue-500/50 shadow-2xl">
-                <AvatarImage src="https://camo.githubusercontent.com/26a6a5f5a33b8a2c55e8750f33616cc45c96388e88ce74cb1c023a2cc5e0d2af/68747470733a2f2f70726f6d7074692e61692f77702d636f6e74656e742f75706c6f6164732f323032332f30372f7063626f69322e706e67" alt="Atulya Srivastava" />
+                <AvatarImage src="https://i.pinimg.com/736x/b0/82/2c/b0822c17e727de4ece2e03f39e51e3ed.jpg" className="object-cover" alt="Atulya Srivastava" />
                 <AvatarFallback className="bg-gradient-to-br from-blue-600 to-cyan-500 text-2xl text-white">AS</AvatarFallback>
               </Avatar>
             </div>
@@ -175,7 +190,7 @@ const Index = () => {
                 <span 
                   // text="Atulya Srivastava" 
                   className="bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-600 bg-clip-text text-transparent inline">Atulya Srivastava</span>
-                  {/* // runOnce={true} */}
+                  {/* runOnce={true} */}
                
               </h1>
               <div className="text-xl md:text-3xl text-muted-foreground font-mono">
@@ -263,46 +278,7 @@ const Index = () => {
         </div>
       </section> */}
 
-
-{/* Skills Section */}
-<section id="skills" className="py-20 px-6 relative">
-  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent" />
-  <div className="container mx-auto max-w-6xl relative z-10">
-    <TextScramble text="<skills>" className="text-3xl md:text-4xl font-bold mb-12 font-mono bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent" isPaused={isAnimationPaused}>
-      <Code2 className="w-8 h-8 inline mr-3 text-cyan-500" />
-    </TextScramble>
-    
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-      {skills.map((skill, index) => {
-        const IconComponent = skill.icon;
-        return (
-          <Card 
-            key={index}
-            className="group relative bg-card/50 backdrop-blur-md border-border/50 hover:border-blue-500/50 transition-all duration-300 overflow-hidden hover:-translate-y-3 hover:shadow-2xl hover:shadow-blue-500/30"
-          >
-            {/* Enhanced glow effect */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-30 group-hover:blur-xl transition-all duration-300`} />
-            
-            <CardContent className="relative p-6 rounded-full flex flex-col items-center justify-center space-y-4 h-full min-h-[140px]">
-              {/* Enhanced icon animation */}
-              <div className="p-4 rounded-xl bg-transparent group-hover:scale-125 group-hover:-rotate-6 transition-all duration-300">
-                <IconComponent 
-                  className={`w-10 h-10 bg-gradient-to-br ${skill.color} bg-clip-text text-transparent transition-all duration-300 group-hover:drop-shadow-[0_2px_8px_theme(colors.blue.500)]`} 
-                />
-              </div>
-              <p className="font-mono text-sm text-foreground font-semibold text-center group-hover:text-blue-300 transition-colors">
-                {skill.name}
-              </p>
-            </CardContent>
-          </Card>
-        );
-      })}
-    </div>
-    
-    <p className="text-sm text-muted-foreground font-mono mt-8">&lt;/skills&gt;</p>
-  </div>
-</section>
-
+   <TechStack isAnimationPaused={false}/>
 
       {/* Projects Section */}
       <section id="projects" className="py-20 px-6 relative">
