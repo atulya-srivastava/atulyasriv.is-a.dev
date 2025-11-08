@@ -49,10 +49,10 @@ const Navbar = () => {
             <a href="\" className="bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-600 bg-clip-text text-transparent font-bold">&lt;atulyasriv/&gt;</a>
           </div>
           <div className="hidden md:flex gap-8 font-mono text-sm">
-            <a href="#about" className="hover:text-blue-500 transition-colors">&lt;about /&gt;</a>
-            <a href="#skills" className="hover:text-cyan-500 transition-colors">&lt;skills /&gt;</a>
-            <a href="#projects" className="hover:text-purple-500 transition-colors">&lt;projects /&gt;</a>
-            <a href="#contact" className="hover:text-blue-500 transition-colors">&lt;contact /&gt;</a>
+            <a href="#about" className="hover:text-blue-500 transition-colors">&lt;about/&gt;</a>
+            <a href="#skills" className="hover:text-cyan-500 transition-colors">&lt;skills/&gt;</a>
+            <a href="#projects" className="hover:text-purple-500 transition-colors">&lt;projects/&gt;</a>
+            <a href="#contact" className="hover:text-blue-500 transition-colors">&lt;contact/&gt;</a>
           </div>
         </div>
       </nav>
