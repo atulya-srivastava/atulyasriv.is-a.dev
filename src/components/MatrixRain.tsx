@@ -50,20 +50,17 @@ const MatrixRain = () => {
     }
 
     const draw = () => {
-      // Fill with a semi-transparent dark color to create the fading trail effect
-      ctx.fillStyle = 'rgba(10, 15, 20, 0.05)';
+      // Use transparent black to create the fading trail effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.06)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Set character style
-      ctx.fillStyle = 'hsl(180, 100%, 50%)'; // Cyan color
+      ctx.fillStyle = 'hsl(200,100%,60%)'; // Cyan color
       ctx.font = '15px monospace';
 
       // Loop through each column
       for (let i = 0; i < drops.length; i++) {
-        // --- THIS IS THE MODIFIED PART ---
-        // Get a random char from any of our defined blocks
         const text = getRandomChar();
-        // --- END OF MODIFICATION ---
         
         ctx.fillText(text, i * 20, drops[i] * 20);
 
@@ -78,7 +75,7 @@ const MatrixRain = () => {
     };
 
     // --- Animation Loop ---
-    const interval = setInterval(draw, 40); // ~30 FPS
+    const interval = setInterval(draw, 50); // ~30 FPS
 
     // --- Cleanup ---
     // Handle window resize to re-initialize
@@ -103,10 +100,12 @@ const MatrixRain = () => {
 
   // This canvas will sit behind all other content
   return (
-    <canvas 
-      ref={canvasRef} 
-      className="absolute top-0 left-0 inset-0 opacity-20 pointer-events-none z-0" 
-    />
+    <div className="bg-black/45 backdrop-blur-sm">
+      <canvas
+        ref={canvasRef}
+        className="absolute top-0 left-0 inset-0 opacity-55 pointer-events-none z-0"
+      />
+    </div>
   );
 };
 
