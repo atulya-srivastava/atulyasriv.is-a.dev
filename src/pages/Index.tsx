@@ -7,7 +7,6 @@ import {
   Github,
   Linkedin,
   Mail,
-  ExternalLink,
   Terminal,
   Braces,
   Box,
@@ -15,31 +14,14 @@ import {
   Pause,
   ArrowUpRight,
   Sparkles,
-  Monitor,
-  Wrench,
-  Server,
-  Database,
 } from "lucide-react";
-import {
-  FaReact,
-  FaNodeJs,
-  FaPython,
-  FaGitAlt,
-  FaDatabase,
-} from "react-icons/fa";
-import {
-  SiTypescript,
-  SiJavascript,
-  SiTailwindcss,
-  SiNextdotjs,
-  SiPostgresql,
-  SiGraphql,
-} from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 import Navbar from "@/components/NavBar";
 import TextScramble from "@/components/TextScramble";
 import MatrixRain from "@/components/MatrixRain";
 import TechStack from "@/components/TechStack";
+import toast from 'react-hot-toast';
+import About from "@/components/About";
 
 const Index = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -80,37 +62,6 @@ const Index = () => {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const skills = [
-    { name: "React", icon: FaReact, color: "from-cyan-500 to-blue-500" },
-    {
-      name: "TypeScript",
-      icon: SiTypescript,
-      color: "from-blue-500 to-indigo-500",
-    },
-    { name: "Node.js", icon: FaNodeJs, color: "from-green-500 to-emerald-500" },
-    { name: "Python", icon: FaPython, color: "from-yellow-500 to-orange-500" },
-    {
-      name: "JavaScript",
-      icon: SiJavascript,
-      color: "from-yellow-400 to-yellow-600",
-    },
-    {
-      name: "Tailwind CSS",
-      icon: SiTailwindcss,
-      color: "from-cyan-400 to-blue-500",
-    },
-    { name: "Next.js", icon: SiNextdotjs, color: "from-gray-700 to-gray-900" },
-    { name: "Git", icon: FaGitAlt, color: "from-orange-500 to-red-500" },
-    { name: "MongoDB", icon: FaDatabase, color: "from-green-600 to-green-700" },
-    {
-      name: "PostgreSQL",
-      icon: SiPostgresql,
-      color: "from-blue-600 to-indigo-600",
-    },
-    { name: "REST APIs", icon: TbApi, color: "from-purple-500 to-pink-500" },
-    { name: "GraphQL", icon: SiGraphql, color: "from-pink-500 to-purple-600" },
-  ];
 
   const [currentPlatform, setCurrentPlatform] = useState(0);
   const platforms = [
@@ -183,6 +134,13 @@ const Index = () => {
       gradient: "from-purple-600 via-indigo-600 to-blue-600",
     },
   ];
+
+  useEffect(()=>{
+    toast("Under construction" , { 
+    duration: 2000,
+    className: 'bg-gray-900/50 text-white backdrop-blur-xl rounded-xl',
+    icon: '🏗️',});
+  },[])
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
@@ -300,6 +258,7 @@ const Index = () => {
               variant="outline"
               size="lg"
               className="border-blue-500/50 hover:bg-blue-500/10"
+              onClick={() => window.location.href = 'mailto:vns.atulyasrivastava@gmail.com'}
             >
               <Mail className="w-4 h-4 mr-2" />
               Contact Me
@@ -313,70 +272,10 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6">
-        <div className="container mx-auto max-w-4xl">
-          <TextScramble
-            text="<about>"
-            className="text-3xl md:text-4xl font-bold mb-8 font-mono bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent"
-            isPaused={isAnimationPaused}
-          >
-            <Braces className="w-8 h-8 inline mr-3 text-blue-500" />
-          </TextScramble>
-          <Card className="bg-gradient-to-br from-card to-card/50 border-blue-500/30 shadow-xl shadow-blue-500/10 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 backdrop-blur-sm">
-            <CardContent className="p-8">
-              <p className="text-lg text-foreground/90 leading-relaxed mb-4">
-                I'm a passionate full-stack developer with a keen eye for
-                creating seamless user experiences and robust backend systems.
-                With expertise in modern web technologies, I transform ideas
-                into functional, scalable applications.
-              </p>
-              <p className="text-lg text-foreground/90 leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies,
-                contributing to open-source projects, or sharing knowledge with
-                the developer community.
-              </p>
-            </CardContent>
-          </Card>
-          <p className="text-sm text-muted-foreground font-mono mt-4">
-            &lt;/about&gt;
-          </p>
-        </div>
-      </section>
+     <About isAnimationPaused={isAnimationPaused}/>
 
-      {/* Skills Section
-      <section id="skills" className="py-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent" />
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <TextScramble text="<skills>" className="text-3xl md:text-4xl font-bold mb-12 font-mono bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent" isPaused={isAnimationPaused}>
-            <Code2 className="w-8 h-8 inline mr-3 text-cyan-500" />
-          </TextScramble>
-          <div className="relative">
-            <div className={`flex ${isAnimationPaused ? '' : 'animate-marquee'}`}>
-              {[...skills, ...skills].map((skill, index) => {
-                const IconComponent = skill.icon;
-                return (
-                  <div 
-                    key={index}
-                    className="flex-shrink-0 mx-4"
-                  >
-                    <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 cursor-default group w-36 h-36 flex items-center justify-center">
-                      <CardContent className="p-4 text-center space-y-3">
-                        <div className={`bg-gradient-to-br ${skill.color} p-3 rounded-xl group-hover:scale-110 transition-transform duration-300 inline-block`}>
-                          <IconComponent className="w-8 h-8 text-white" />
-                        </div>
-                        <p className="font-mono text-xs text-foreground font-semibold">{skill.name}</p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <p className="text-sm text-muted-foreground font-mono mt-8">&lt;/skills&gt;</p>
-        </div>
-      </section> */}
-
-      <TechStack isAnimationPaused={false} />
+     {/* TechStack Section */}
+      <TechStack isAnimationPaused={isAnimationPaused} />
 
       {/* Projects Section */}
       <section id="projects" className="py-20 px-6 relative">
